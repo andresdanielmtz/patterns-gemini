@@ -4,16 +4,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && node dist/extension.js",
-    "clean": "tsc --build --clean"
+    "clean": "tsc --build --clean",
+    "build": "tsc --build && node --env-file .env dist/extension.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/node": "^22.14.1",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "axios": "^1.8.4"
+    "axios": "^1.8.4",
+    "dotenv": "^16.5.0",
+    "vscode": "^1.1.37"
   }
 }

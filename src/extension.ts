@@ -4,7 +4,7 @@ export const analyzeCodeWithGemini = async (
   code: string,
   characters: { prompt: string; gif: string }
 ) => {
-  const apikey = "AIzaSyCK77OqP6dHRFpbkcyjGRquqhdbHn3IOug";
+  const apikey = process.env.GEMINI_KEY;
   if (!apikey) {
     console.error("API key is missing");
     return;
@@ -26,3 +26,17 @@ export const analyzeCodeWithGemini = async (
     return result;
   } catch (error) {}
 };
+
+// Example usage
+analyzeCodeWithGemini(
+  `const a = 1;
+const b = 2;
+const c = a + b;
+console.log(c);`,
+  {
+    prompt: "Analyze the following code:\n",
+    gif: "https://media1.tenor.com/m/CNI1fSM1XSoAAAAd/shocked-surprised.gif",
+  }
+).then((result) => {
+  console.log(result);
+});
